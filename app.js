@@ -1,6 +1,8 @@
 const express = require('express');
 const Twitter = require('twit');
 
+const PORT = process.env.PORT || 3000; 
+
 const app = express();
 const client = new Twitter({
   consumer_key: process.env.CONSUMER_KEY,
@@ -8,6 +10,8 @@ const client = new Twitter({
   access_token: process.env.ACCESS_TOKEN,
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
+
+
  
 app.use(require('cors')());
 app.use(require('body-parser').json());
@@ -58,6 +62,6 @@ app.post('/post_tweet', (req, res) => {
     });
 });
 
-app.listen(3000, () => console.log('Server running'));
+app.listen(PORT);
 
 module.exports = app;
