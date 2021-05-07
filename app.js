@@ -12,7 +12,6 @@ const client = new Twitter({
 });
 
 
- 
 app.use(require('cors')());
 app.use(require('body-parser').json());
 
@@ -33,7 +32,7 @@ app.get('/home_timeline', (req, res) => {
 
 //Get tweets of user
 app.get('/user_timeline', (req, res) => {
-  const params = { tweet_mode: 'extended', exclude_replies: true, count: 10, screen_name: req.query.user };
+  const params = { tweet_mode: 'extended', count: 10, screen_name: req.query.user };
   
   client
     .get(`statuses/user_timeline`, params)
